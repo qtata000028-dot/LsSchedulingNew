@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>排程系统</title>
+    <!-- 引入 Inter 字体，提升数字和英文字符的清晰度与高级感 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    
+    <!-- 样式由 Tailwind（本地构建）+ styles.css 提供；不再依赖 CDN / importmap -->
+</head>
+  <body>
+    <div id="root"></div>
+    <!-- 关键修复：添加入口脚本，Vercel 构建时需要这个来加载 React 应用 -->
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
