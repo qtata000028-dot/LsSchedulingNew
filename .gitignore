@@ -22,3 +22,20 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+# VS / IDE
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+.vscode/
+
+# Copilot / Index / DB cache
+**/CopilotIndices/
+**/*.db
+**/*.sqlite
+**/*.sqlite3
+
+# Node build
+dist/
+node_modules/
