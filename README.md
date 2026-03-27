@@ -55,6 +55,27 @@ npm run dev
 
 默认会在 `http://localhost:3000` 启动。
 
+## 3.1) 已集成后端 (TunnelBackend)
+
+本仓库已包含后端项目：`TunnelBackend/`。前后端联调时：
+
+- 后端启动：在 `TunnelBackend/` 执行 `dotnet run`
+- 前端继续使用 `npm run dev`（Vite 代理 `/api`）
+
+如果你需要“单包部署（后端托管前端）”，可以执行：
+
+```bash
+npm run publish:full
+```
+
+产物会输出到 `publish/`，直接运行：
+
+```bash
+dotnet .\\publish\\TunnelBackend.dll
+```
+
+或在 `publish/` 目录下执行 `dotnet TunnelBackend.dll` 启动即可。
+
 ## 4) 配置说明（.env.local）
 
 `.env.local` 仅用于本机开发，不要提交到仓库。可选项如下：
@@ -69,7 +90,7 @@ VITE_DEV_PORT=3000
 # VITE_BACKEND_BASE_URL=https://xxxxx.trycloudflare.com
 
 # 可选：后端授权/校验密钥（X-API-KEY）
-VITE_API_KEY=lserp2026wyftool
+VITE_API_KEY=change-me
 
 # 可选：从 Supabase 读“当前后端公网地址”记录（比如 home-pc）
 VITE_SUPABASE_URL=
@@ -137,6 +158,8 @@ VITE_BACKEND_BASE_URL=https://xxxxx.trycloudflare.com
 - `npm run dev`：本地开发
 - `npm run build`：构建生产包
 - `npm run preview`：本地预览构建产物
+- `npm run build:backend`：构建前端并拷贝到后端 `wwwroot`
+- `npm run publish:full`：前后端一体化发布到 `publish/`
 
 ## 10) 常见问题
 

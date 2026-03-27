@@ -1,6 +1,6 @@
 import { getBackendBaseUrl } from './authService';
 
-const API_KEY = 'lserp2026wyftool';
+const API_KEY = (import.meta.env.VITE_API_KEY as string | undefined) ?? '';
 
 export interface Order {
   OrderId: string;

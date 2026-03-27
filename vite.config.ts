@@ -6,10 +6,10 @@ export default defineConfig(({ mode }) => {
     // 读取 .env*（建议自定义变量都用 VITE_ 前缀）
     const env = loadEnv(mode, '.', '');
 
-    // ✅ 开发阶段用 Vite 代理 /api 到 .NET 8 后端，前端代码只写 /api 即可
-    // 默认端口按 ASP.NET Core 常见默认：http://localhost:5000
+    // ✅ 开发阶段用 Vite 代理 /api 到后端，前端代码只写 /api 即可
+    // 默认端口改为与后端开发配置一致：http://localhost:5111
     // 你也可以在 .env.local 里设置：VITE_PROXY_TARGET=http://localhost:xxxx
-    const proxyTarget = (env.VITE_PROXY_TARGET || 'http://localhost:5000').replace(/\/$/, '');
+    const proxyTarget = (env.VITE_PROXY_TARGET || 'http://localhost:5111').replace(/\/$/, '');
     const devPort = Number(env.VITE_PORT || 3000);
 
     return {

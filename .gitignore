@@ -39,3 +39,7 @@ dist-ssr
 # Node build
 dist/
 node_modules/
+publish/
+*.rar
+*.code-workspace
+TunnelBackend/Features.zip

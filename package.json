@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "build:backend": "npm run build && \"%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" -ExecutionPolicy Bypass -File scripts/build-backend.ps1",
+    "publish:full": "\"%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe\" -ExecutionPolicy Bypass -File scripts/publish.ps1"
   },
   "dependencies": {
     "react": "18.3.1",

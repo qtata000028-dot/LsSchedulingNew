@@ -17,8 +17,8 @@ const supabase = (SUPABASE_URL && SUPABASE_KEY)
   ? createClient(SUPABASE_URL, SUPABASE_KEY)
   : null;
 
-const API_KEY = (import.meta.env.VITE_API_KEY as string | undefined) ?? 'lserp2026wyftool';
-const DEFAULT_LOCAL_URL = (import.meta.env.VITE_DEFAULT_BACKEND_URL as string | undefined) ?? 'http://localhost:5000';
+const API_KEY = (import.meta.env.VITE_API_KEY as string | undefined) ?? '';
+const DEFAULT_LOCAL_URL = (import.meta.env.VITE_DEFAULT_BACKEND_URL as string | undefined) ?? 'http://localhost:5111';
 const TUNNEL_NAME = (import.meta.env.VITE_TUNNEL_NAME as string | undefined) ?? 'home-pc';
 
 // 缓存 Base URL，避免每次请求都查库
@@ -73,6 +73,16 @@ async function getDynamicBaseUrl(): Promise<string> {
   if (import.meta.env.DEV) {
     cachedBaseUrl = window.location.origin;
     return cachedBaseUrl;
+  }
+
+  // 2) 生产环境优先尝试同源（适用于前后端同域/反代的部署）
+  //    避免回退到 localhost 导致外网无法访问。
+  if (typeof window !== 'undefined') {
+    const origin = window.location.origin;
+    if (origin && !/^(http:\/\/localhost|http:\/\/127\.0\.0\.1)/i.test(origin)) {
+      cachedBaseUrl = origin.replace(/\/$/, '');
+      return cachedBaseUrl;
+    }
   }
 
   try {

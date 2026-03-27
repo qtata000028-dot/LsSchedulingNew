@@ -1,0 +1,12 @@
+@baseUrl = http://localhost:5111
+@apiKey = dev-key-change-me
+
+### Health
+GET {{baseUrl}}/health
+
+### Health DB
+GET {{baseUrl}}/health/db
+
+### Departments
+GET {{baseUrl}}/api/departments
+X-API-KEY: {{apiKey}}
